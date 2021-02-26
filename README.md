@@ -14,8 +14,8 @@ This package contains staging models, designed to work simultaneously with our [
 * Name columns consistently across all packages:
     * Boolean fields are prefixed with `is_` or `has_`
     * Timestamps are appended with `_at`
-    * ID primary keys are prefixed with the name of the table.  For example, a user table's ID column is renamed user_id.
-    * Foreign keys include the table that they refer to. For example, an application's recruiter user ID column is renamed recruiter_user_id.
+    * ID primary keys are prefixed with the name of the table.  For example, a user table's ID column is renamed `user_id`.
+    * Foreign keys include the table that they refer to. For example, an application's recruiter user ID column is renamed `recruiter_user_id`.
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
@@ -35,7 +35,7 @@ vars:
 ```
 
 ### Passing Through Custom Columns
-The Greenhouse `APPLICATION`, `JOB`, and `CANDIDATE` tables may all have custom columns, all prefixed with `custom_field_`. To pass these columns along to the staging and final transformation models, add the following variables to your `dbt_project.yml` file:
+The Greenhouse `APPLICATION`, `JOB`, and `CANDIDATE` tables may have custom columns, all prefixed with `custom_field_`. To pass these columns along to the staging and final transformation models, add the following variables to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -52,7 +52,7 @@ vars:
 ### Disabiling Models
 Your Greenhouse connector might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Greenhouse or have actively excluded some tables from your syncs.
 
-To disable the corresponding functionality in the package, you must add the relevant variables. By default, all variables are assumed to be true. Add variables for only the tables you would like to disable:
+To disable the corresponding functionality in the package, you must add the relevant variables. By default, all variables are assumed to be `true`. Add variables for only the tables you would like to disable:
 
 ```yml
 # dbt_project.yml
@@ -66,7 +66,7 @@ vars:
     greenhouse_using_app_history: false # Disable if you do not have APPLICATION_HISTORY synced and/or do not want to run the application_history transform model
 ```
 
-*Note: this package only integrates the above variables. If you'd like to disable other models, please create an issue specifying which ones.*
+*Note: This package only integrates the above variables. If you'd like to disable other models, please create an issue specifying which ones.*
 
 ## Contributions
 Don't see a model or specific metric you would have liked to be included? Notice any bugs when installing 
